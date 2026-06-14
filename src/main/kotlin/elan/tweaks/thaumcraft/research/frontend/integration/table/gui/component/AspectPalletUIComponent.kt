@@ -10,6 +10,7 @@ import elan.tweaks.common.gui.component.dragndrop.DropDestinationUIComponent
 import elan.tweaks.common.gui.dto.VectorXY
 import elan.tweaks.common.gui.layout.grid.GridLayout
 import elan.tweaks.common.gui.peripheral.MouseButton
+import elan.tweaks.config.ResearchTweaksConfig
 import elan.tweaks.thaumcraft.research.frontend.domain.ports.provided.AspectPalletPort
 import elan.tweaks.thaumcraft.research.frontend.domain.ports.provided.ResearcherKnowledgePort
 import elan.tweaks.thaumcraft.research.frontend.domain.ports.provided.ResearcherKnowledgePort.Knowledge
@@ -123,7 +124,7 @@ class AspectPalletUIComponent(
   }
 
   private fun combine(draggable: Aspect, targetAspect: Aspect) =
-      if (draggable.tag != targetAspect.tag) {
+      if (ResearchTweaksConfig.client.allowCombiningSameAspect || draggable.tag != targetAspect.tag) {
           if (isIntendingToBatch()) pallet.combineBatch(draggable, targetAspect)
           else pallet.combine(draggable, targetAspect)
       } else {
