@@ -123,8 +123,12 @@ class AspectPalletUIComponent(
   }
 
   private fun combine(draggable: Aspect, targetAspect: Aspect) =
-      if (isIntendingToBatch()) pallet.combineBatch(draggable, targetAspect)
-      else pallet.combine(draggable, targetAspect)
+      if (draggable.tag != targetAspect.tag) {
+          if (isIntendingToBatch()) pallet.combineBatch(draggable, targetAspect)
+          else pallet.combine(draggable, targetAspect)
+      } else {
+          Result.failure(Exception("Same aspect"))
+      }
 
   private fun isIntendingToBatch() = isCtrlKeyDown()
 
