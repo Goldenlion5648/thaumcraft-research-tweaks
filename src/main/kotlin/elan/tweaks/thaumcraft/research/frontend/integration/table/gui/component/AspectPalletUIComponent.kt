@@ -124,7 +124,7 @@ class AspectPalletUIComponent(
   }
 
   private fun combine(draggable: Aspect, targetAspect: Aspect) =
-      if (ResearchTweaksConfig.client.allowCombiningSameAspect || draggable.tag != targetAspect.tag) {
+      if (ResearchTweaksConfig.client.allowCombiningSameAspect || draggable !== targetAspect) {
           if (isIntendingToBatch()) pallet.combineBatch(draggable, targetAspect)
           else pallet.combine(draggable, targetAspect)
       } else {
