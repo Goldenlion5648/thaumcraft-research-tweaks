@@ -36,9 +36,9 @@ class PortContainer(player: EntityPlayer, table: TileResearchTable) {
       AspectPallet(base = base, pool = pool, combiner = combiner, batchSize = 10)
 
   val tree: AspectsTreePort = AspectTree
-    val allAspects: List<Aspect> = Aspect.aspects.values.sortedBy { it.tag }
+  val allAspects: List<Aspect> = Aspect.aspects.values.sortedBy { it.tag }
 
-    val researcher: ResearcherKnowledgePort =
+  val researcher: ResearcherKnowledgePort =
       ResearcherKnowledge(
           base = base,
           pool = pool,
